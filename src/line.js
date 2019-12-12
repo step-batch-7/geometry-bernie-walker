@@ -1,20 +1,23 @@
+const arePointsEqual = function(point1, point2) {
+  return point1.x === point2.x && point1.y === point1.y;
+};
+
 class Line {
-  constructor(point1, point2) {
-    this.A = point1;
-    this.B = point2;
+  constructor(entry1, entry2) {
+    this.endA = entry1;
+    this.endB = entry2;
   }
 
   toString() {
-    return `two points of the line are A = (${this.A}) and B = (${this.B})`;
+    return `Line A(${this.endA.x},${this.endA.y}) B(${this.endB.x},${this.endB.y})`;
   }
 
   isEqualTo(anotherLine) {
-    const isPointOneEqual =
-      this.A[0] == anotherLine.A[0] && this.A[1] == anotherLine.A[1];
-    const isPointTwoEqual =
-      this.B[0] == anotherLine.B[0] && this.B[1] == anotherLine.B[1];
-
-    return isPointOneEqual && isPointTwoEqual;
+    return (
+      anotherLine instanceof Line &&
+      arePointsEqual(this.endA, anotherLine.endA) &&
+      arePointsEqual(this.endB, anotherLine.endB)
+    );
   }
 }
 
