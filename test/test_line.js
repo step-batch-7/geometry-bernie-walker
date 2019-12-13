@@ -23,6 +23,7 @@ describe("line", function() {
     const myLine = new Line({ x: 2, y: 1 }, { x: 6, y: 4 });
     const similarLine = new Line({ x: 2, y: 1 }, { x: 6, y: 4 });
     const nonSimilarLine = new Line({ x: 1, y: 1 }, { x: 1, y: 2 });
+    const nonLine = { start: { x: 2, y: 1 }, end: { x: 4, y: 2.5 } };
 
     it("should accept the equality of similar lines", function() {
       const actual = myLine.isEqualTo(similarLine);
@@ -31,6 +32,11 @@ describe("line", function() {
 
     it("should refuse the equality of non similar lines", function() {
       const actual = myLine.isEqualTo(nonSimilarLine);
+      assert.isFalse(actual);
+    });
+
+    it("should refuse the equality if given object is not a line", function() {
+      const actual = myLine.isEqualTo(nonLine);
       assert.isFalse(actual);
     });
   });
@@ -101,7 +107,7 @@ describe("line", function() {
     });
 
     it("should decline is the type of one is not Line", function() {
-      const nonLine = ({ x: 2, y: 1 }, { x: 4, y: 2.5 });
+      const nonLine = { start: { x: 2, y: 1 }, end: { x: 4, y: 2.5 } };
       assert.isFalse(myLine.isParallelTo(nonLine));
     });
 
