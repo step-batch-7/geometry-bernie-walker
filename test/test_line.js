@@ -33,9 +33,27 @@ describe("line", function() {
   });
 
   describe("length", function() {
-    it("should calculate the length of the line for all positive coordinates", function() {
+    it("should calculate the length if coordinates are all positive integers", function() {
       const actual = myLine.length;
       assert.strictEqual(actual, 5);
+    });
+
+    it("should calculate the length when all the coordinates are negative integers", function() {
+      const line = new Line({ x: -1, y: -2 }, { x: -3, y: -4 });
+      const actual = line.length;
+      assert.approximately(actual, 2.828, 0.01);
+    });
+
+    it("should calculate the lengt when the coordinates are combination of +/- integer values", function() {
+      let line = new Line({ x: 2, y: -1 }, { x: -3, y: 4 });
+      let actual = line.length;
+      assert.approximately(actual, 7.071, 0.01);
+    });
+
+    it("the length calculated must be same when the order of coordinates is different", function() {
+      line = new Line({ x: -3, y: 4 }, { x: 2, y: -1 });
+      actual = line.length;
+      assert.approximately(actual, 7.071, 0.01);
     });
   });
 });
