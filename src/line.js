@@ -19,6 +19,12 @@ class Line {
       arePointsEqual(this.end, otherObject.end)
     );
   }
+
+  get length() {
+    const differenceInX = this.start.x - this.end.x;
+    const differenceInY = this.start.y - this.end.y;
+    return Math.sqrt(differenceInX ** 2 + differenceInY ** 2);
+  }
 }
 
 module.exports = Line;
