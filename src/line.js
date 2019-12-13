@@ -3,20 +3,20 @@ const arePointsEqual = function(point1, point2) {
 };
 
 class Line {
-  constructor(entry1, entry2) {
-    this.start = { ...entry1 };
-    this.end = { ...entry2 };
+  constructor(pointA, pointB) {
+    this.start = { x: pointA.x, y: pointA.y };
+    this.end = { x: pointB.x, y: pointB.y };
   }
 
   toString() {
     return `Line A(${this.start.x},${this.start.y}) B(${this.end.x},${this.end.y})`;
   }
 
-  isEqualTo(anotherLine) {
+  isEqualTo(otherObject) {
     return (
-      anotherLine instanceof Line &&
-      arePointsEqual(this.start, anotherLine.start) &&
-      arePointsEqual(this.end, anotherLine.end)
+      otherObject instanceof Line &&
+      arePointsEqual(this.start, otherObject.start) &&
+      arePointsEqual(this.end, otherObject.end)
     );
   }
 }
