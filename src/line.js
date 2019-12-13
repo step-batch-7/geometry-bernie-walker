@@ -21,19 +21,19 @@ class Line {
   }
 
   get length() {
-    const differenceInX = this.start.x - this.end.x;
-    const differenceInY = this.start.y - this.end.y;
-    return Math.sqrt(differenceInX ** 2 + differenceInY ** 2);
+    const diffInX = this.start.x - this.end.x;
+    const diffInY = this.start.y - this.end.y;
+    return Math.sqrt(diffInX ** 2 + diffInY ** 2);
   }
 
-  getSlope(line) {
-    const differenceInX = line.start.x - line.end.x;
-    const differenceInY = line.start.y - line.end.y;
-    return differenceInY / differenceInX;
+  getSlope(line = this) {
+    const diffInX = line.start.x - line.end.x;
+    const diffInY = line.start.y - line.end.y;
+    return diffInY / diffInX;
   }
 
   get slope() {
-    return this.getSlope(this);
+    return this.getSlope();
   }
 
   isParallelTo(otherObject) {
