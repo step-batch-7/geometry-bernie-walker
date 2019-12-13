@@ -56,4 +56,30 @@ describe("line", function() {
       assert.approximately(actual, 7.071, 0.01);
     });
   });
+
+  describe("slope", function() {
+    it("should calculate the slope when all the coordinates are positive", function() {
+      const line = new Line({ x: 2, y: 1 }, { x: 6, y: 4 });
+      const actual = line.slope;
+      assert.strictEqual(actual, 0.75);
+    });
+
+    it("the slope should be same for the same oordinates in different order", function() {
+      const line = new Line({ x: 6, y: 4 }, { x: 2, y: 1 });
+      const actual = line.slope;
+      assert.strictEqual(actual, 0.75);
+    });
+
+    it("the slope should be zero when the oordinates are equal", function() {
+      const line = new Line({ x: 6, y: 4 }, { x: 2, y: 4 });
+      const actual = line.slope;
+      assert.strictEqual(actual, 0);
+    });
+
+    it("the slope should be infinity when the absisscas are equal", function() {
+      const line = new Line({ x: 2, y: 4 }, { x: 2, y: 1 });
+      const actual = line.slope;
+      assert.strictEqual(actual, Infinity);
+    });
+  });
 });
