@@ -26,10 +26,22 @@ class Line {
     return Math.sqrt(differenceInX ** 2 + differenceInY ** 2);
   }
 
-  get slope() {
-    const differenceInX = this.start.x - this.end.x;
-    const differenceInY = this.start.y - this.end.y;
+  getSlope(line) {
+    const differenceInX = line.start.x - line.end.x;
+    const differenceInY = line.start.y - line.end.y;
     return differenceInY / differenceInX;
+  }
+
+  get slope() {
+    return this.getSlope(this);
+  }
+
+  isParallelTo(otherObject) {
+    if (this.isEqualTo(otherObject)) return false;
+
+    return (
+      otherObject instanceof Line && this.slope === this.getSlope(otherObject)
+    );
   }
 }
 
