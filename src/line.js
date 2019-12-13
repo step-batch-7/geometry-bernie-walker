@@ -4,19 +4,19 @@ const arePointsEqual = function(point1, point2) {
 
 class Line {
   constructor(entry1, entry2) {
-    this.endA = entry1;
-    this.endB = entry2;
+    this.start = entry1;
+    this.end = entry2;
   }
 
   toString() {
-    return `Line A(${this.endA.x},${this.endA.y}) B(${this.endB.x},${this.endB.y})`;
+    return `Line A(${this.start.x},${this.start.y}) B(${this.end.x},${this.end.y})`;
   }
 
   isEqualTo(anotherLine) {
     return (
       anotherLine instanceof Line &&
-      arePointsEqual(this.endA, anotherLine.endA) &&
-      arePointsEqual(this.endB, anotherLine.endB)
+      arePointsEqual(this.start, anotherLine.start) &&
+      arePointsEqual(this.end, anotherLine.end)
     );
   }
 }

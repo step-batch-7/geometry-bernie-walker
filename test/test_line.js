@@ -4,6 +4,11 @@ const Line = require("../src/line");
 describe("line", function() {
   const myLine = new Line({ x: 2, y: 3 }, { x: 3, y: 4 });
 
+  it("should produce the desired line object", function() {
+    const expected = { start: { x: 2, y: 3 }, end: { x: 3, y: 4 } };
+    assert.deepStrictEqual(myLine, expected);
+  });
+
   describe("toString", function() {
     it("should display the string representation of the line", function() {
       const actual = myLine.toString();
