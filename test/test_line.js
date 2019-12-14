@@ -124,4 +124,24 @@ describe("line", function() {
       assert.approximately(actual, 1.333, 0.01);
     });
   });
+
+  describe("split", function() {
+    it("should split the line in equal halves for positive integers", function() {
+      const line = new Line({ x: 2, y: 3 }, { x: 6, y: 9 });
+      const expected = [
+        { endA: { x: 2, y: 3 }, endB: { x: 4, y: 6 } },
+        { endA: { x: 4, y: 6 }, endB: { x: 6, y: 9 } }
+      ];
+      assert.deepStrictEqual(line.split(), expected);
+    });
+
+    it("should split the line in equal halves for negative integers", function() {
+      const line = new Line({ x: 2, y: -3 }, { x: -6, y: 9 });
+      const expected = [
+        { endA: { x: 2, y: -3 }, endB: { x: -2, y: 3 } },
+        { endA: { x: -2, y: 3 }, endB: { x: -6, y: 9 } }
+      ];
+      assert.deepStrictEqual(line.split(), expected);
+    });
+  });
 });
