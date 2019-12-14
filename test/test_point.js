@@ -51,4 +51,17 @@ describe("point", function() {
       assert.isFalse(point.isEqualTo(nonPoint));
     });
   });
+
+  describe("clone", function() {
+    const point = new Point(2, 3);
+
+    it("should return the copy of the point", function() {
+      const actual = point.clone();
+      assert.deepStrictEqual(actual, point);
+    });
+
+    it("the returned object must be the copy and not the reference", function() {
+      assert.isFalse(point === point.clone());
+    });
+  });
 });

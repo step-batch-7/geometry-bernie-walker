@@ -19,6 +19,10 @@ class Point {
       this.y === otherObject.y
     );
   }
+
+  clone() {
+    return Object.assign({}, this);
+  }
 }
 
 module.exports = Point;
