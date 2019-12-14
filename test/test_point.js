@@ -45,5 +45,10 @@ describe("point", function() {
       const unequalPoints = new Point(1, 2);
       assert.isFalse(point.isEqualTo(unequalPoints));
     });
+
+    it("shuold decline the equality of a non point, despite the same object", function() {
+      const nonPoint = { x: 2, y: 3 };
+      assert.isFalse(point.isEqualTo(nonPoint));
+    });
   });
 });
