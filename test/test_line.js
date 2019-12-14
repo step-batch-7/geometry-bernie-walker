@@ -12,7 +12,7 @@ describe("line", function() {
     const myLine = new Line({ x: 2, y: 1 }, { x: 6, y: 4 });
     it("should display the string representation of the line", function() {
       const actual = myLine.toString();
-      const expected = "Line A(2,1) B(6,4)";
+      const expected = "[Line (2,1) to (6,4)]";
       assert.strictEqual(actual, expected);
     });
   });

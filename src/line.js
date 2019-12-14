@@ -9,7 +9,7 @@ class Line {
   }
 
   toString() {
-    return `Line A(${this.endA.x},${this.endA.y}) B(${this.endB.x},${this.endB.y})`;
+    return `[Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
   }
 
   get length() {
