@@ -4,36 +4,36 @@ const arePointsEqual = function(point1, point2) {
 
 class Line {
   constructor(pointA, pointB) {
-    this.start = { x: pointA.x, y: pointA.y };
-    this.end = { x: pointB.x, y: pointB.y };
+    this.endA = { x: pointA.x, y: pointA.y };
+    this.endB = { x: pointB.x, y: pointB.y };
   }
 
   toString() {
-    return `Line A(${this.start.x},${this.start.y}) B(${this.end.x},${this.end.y})`;
-  }
-
-  isEqualTo(otherObject) {
-    return (
-      otherObject instanceof Line &&
-      arePointsEqual(this.start, otherObject.start) &&
-      arePointsEqual(this.end, otherObject.end)
-    );
+    return `Line A(${this.endA.x},${this.endA.y}) B(${this.endB.x},${this.endB.y})`;
   }
 
   get length() {
-    const diffInX = this.start.x - this.end.x;
-    const diffInY = this.start.y - this.end.y;
+    const diffInX = this.endA.x - this.endB.x;
+    const diffInY = this.endA.y - this.endB.y;
     return Math.sqrt(diffInX ** 2 + diffInY ** 2);
   }
 
   getSlope(line = this) {
-    const diffInX = line.start.x - line.end.x;
-    const diffInY = line.start.y - line.end.y;
+    const diffInX = line.endA.x - line.endB.x;
+    const diffInY = line.endA.y - line.endB.y;
     return diffInY / diffInX;
   }
 
   get slope() {
     return this.getSlope();
+  }
+
+  isEqualTo(otherObject) {
+    return (
+      otherObject instanceof Line &&
+      arePointsEqual(this.endA, otherObject.endA) &&
+      arePointsEqual(this.endB, otherObject.endB)
+    );
   }
 
   isParallelTo(otherObject) {

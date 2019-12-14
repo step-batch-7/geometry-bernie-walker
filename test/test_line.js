@@ -2,11 +2,9 @@ const { assert } = require("chai");
 const Line = require("../src/line");
 
 describe("line", function() {
-  const myLine = new Line({ x: 2, y: 1 }, { x: 6, y: 4 });
-
   it("should produce the desired line object", function() {
     const myLine = new Line({ x: 2, y: 1 }, { x: 6, y: 4 });
-    const expected = { start: { x: 2, y: 1 }, end: { x: 6, y: 4 } };
+    const expected = { endA: { x: 2, y: 1 }, endB: { x: 6, y: 4 } };
     assert.deepStrictEqual(myLine, expected);
   });
 
