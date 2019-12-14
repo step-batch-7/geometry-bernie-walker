@@ -121,7 +121,7 @@ describe("line", function() {
       let actual = myLine.findX(5);
       assert.approximately(actual, 3.333, 0.01);
       actual = myLine.findX(2);
-      assert.approximately(actual, -1.333, 0.01);
+      assert.approximately(actual, 1.333, 0.01);
     });
   });
 });
