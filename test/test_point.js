@@ -32,4 +32,18 @@ describe("point", function() {
       assert.strictEqual(actual, 5);
     });
   });
+
+  describe("isEqualTo", function() {
+    const point = new Point(2, 3);
+
+    it("should affirm if the two points are equal", function() {
+      const equalPoint = new Point(2, 3);
+      assert.isTrue(point.isEqualTo(equalPoint));
+    });
+
+    it("should decline the equality of two unequal points", function() {
+      const unequalPoints = new Point(1, 2);
+      assert.isFalse(point.isEqualTo(unequalPoints));
+    });
+  });
 });
