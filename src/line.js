@@ -43,6 +43,11 @@ class Line {
       otherObject instanceof Line && this.slope === this.getSlope(otherObject)
     );
   }
+
+  findX(y) {
+    const yPart = (y - this.endA.y) / this.slope;
+    return yPart + this.endA.x;
+  }
 }
 
 module.exports = Line;
