@@ -1,3 +1,10 @@
+const isCoordinateInsideSegment = function(coordinate, limit1, limit2) {
+  const min = Math.min(limit1, limit2);
+  const max = Math.max(limit1, limit2);
+
+  return coordinate >= min && coordinate <= max;
+};
+
 const arePointsEqual = function(point1, point2) {
   return point1.x === point2.x && point1.y === point1.y;
 };
@@ -10,6 +17,18 @@ class Line {
 
   toString() {
     return `[Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
+  }
+
+  split() {
+    const midPoint = {
+      x: (this.endA.x + this.endB.x) / 2,
+      y: (this.endA.y + this.endB.y) / 2
+    };
+
+    return [
+      new this.constructor(this.endA, midPoint),
+      new this.constructor(midPoint, this.endB)
+    ];
   }
 
   get length() {
@@ -26,6 +45,16 @@ class Line {
 
   get slope() {
     return this.getSlope();
+  }
+
+  getIntercept(line = this) {
+    let intercept = this.endA.y - this.endA.x * this.slope;
+    if (intercept == Infinity) intercept = undefined;
+    return intercept;
+  }
+
+  get intercept() {
+    return this.getIntercept();
   }
 
   isEqualTo(otherObject) {
@@ -45,30 +74,9 @@ class Line {
   }
 
   findX(y) {
-    const yPart = (y - this.endA.y) / this.slope;
-    return yPart + this.endA.x;
-  }
-
-  split() {
-    const midPoint = {
-      x: (this.endA.x + this.endB.x) / 2,
-      y: (this.endA.y + this.endB.y) / 2
-    };
-
-    return [
-      new this.constructor(this.endA, midPoint),
-      new this.constructor(midPoint, this.endB)
-    ];
-  }
-
-  getIntercept(line = this) {
-    let intercept = this.endA.y - this.endA.x * this.slope;
-    if (intercept == Infinity) intercept = undefined;
-    return intercept;
-  }
-
-  get intercept() {
-    return this.getIntercept();
+    if (!isCoordinateInsideSegment(y, this.endA.y, this.endB.y)) return NaN;
+    if (this.slope == Infinity || this.slope == -Infinity) return this.endA.x;
+    return (y - this.intercept) / this.slope;
   }
 }
 

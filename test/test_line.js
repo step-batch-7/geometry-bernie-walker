@@ -120,8 +120,17 @@ describe("line", function() {
     it("should return the x value given y when the point falls inside the segment", function() {
       let actual = myLine.findX(5);
       assert.approximately(actual, 3.333, 0.01);
-      actual = myLine.findX(2);
-      assert.approximately(actual, 1.333, 0.01);
+      actual = myLine.findX(3.5);
+      assert.approximately(actual, 2.333, 0.01);
+    });
+
+    it("should return NaN when the y doesn't fall inside the segment", function() {
+      assert.isNaN(myLine.findX(10));
+    });
+
+    it("should return the x value for a vertical line", function() {
+      const line = new Line({ x: 2, y: 3 }, { x: 2, y: 5 });
+      assert.strictEqual(line.findX(4), 2);
     });
   });
 
