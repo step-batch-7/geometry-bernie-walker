@@ -60,6 +60,16 @@ class Line {
       new this.constructor(midPoint, this.endB)
     ];
   }
+
+  getIntercept(line = this) {
+    let intercept = this.endA.y - this.endA.x * this.slope;
+    if (intercept == Infinity) intercept = undefined;
+    return intercept;
+  }
+
+  get intercept() {
+    return this.getIntercept();
+  }
 }
 
 module.exports = Line;

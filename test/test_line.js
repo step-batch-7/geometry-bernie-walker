@@ -144,4 +144,18 @@ describe("line", function() {
       assert.deepStrictEqual(line.split(), expected);
     });
   });
+
+  describe("intercept", function() {
+    it("should give the intercept of the non vertical line", function() {
+      let line = new Line({ x: 2, y: 3 }, { x: 5, y: 8 });
+      assert.approximately(line.intercept, -0.333, 0.01);
+      line = new Line({ x: 3, y: -1 }, { x: -4, y: 6.5 });
+      assert.approximately(line.intercept, 2.214, 0.01);
+    });
+
+    it("the intercept of the vertical line should be undefined", function() {
+      const line = new Line({ x: 2, y: 3 }, { x: 2, y: 9 });
+      assert.isUndefined(line.intercept);
+    });
+  });
 });
