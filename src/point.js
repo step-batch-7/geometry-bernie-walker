@@ -8,8 +8,8 @@ class Point {
     return `[Point @(${this.x},${this.y})]`;
   }
 
-  visit(functionReference) {
-    return functionReference(this.x, this.y);
+  visit(visitor) {
+    return visitor(this.x, this.y);
   }
 
   isEqualTo(otherObject) {
@@ -21,7 +21,7 @@ class Point {
   }
 
   clone() {
-    return Object.assign({}, this);
+    return new Point(this.x, this.y);
   }
 }
 

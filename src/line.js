@@ -25,10 +25,7 @@ class Line {
       y: (this.endA.y + this.endB.y) / 2
     };
 
-    return [
-      new this.constructor(this.endA, midPoint),
-      new this.constructor(midPoint, this.endB)
-    ];
+    return [new Line(this.endA, midPoint), new Line(midPoint, this.endB)];
   }
 
   get length() {
