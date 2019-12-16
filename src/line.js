@@ -68,6 +68,10 @@ class Line {
     if (this.slope == Infinity || this.slope == -Infinity) return this.endA.x;
     return (y - this.intercept) / this.slope;
   }
+
+  findY(x) {
+    return this.slope * x + this.intercept;
+  }
 }
 
 module.exports = Line;

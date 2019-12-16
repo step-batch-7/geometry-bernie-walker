@@ -117,7 +117,7 @@ describe("line", function() {
   describe("findX", function() {
     const myLine = new Line({ x: 2, y: 3 }, { x: 6, y: 9 });
 
-    it("should return the x value given y when the y falls inside the segment", function() {
+    it("should find the x value given y when the y falls inside the segment", function() {
       let actual = myLine.findX(5);
       assert.approximately(actual, 3.333, 0.01);
       actual = myLine.findX(3.5);
@@ -126,11 +126,23 @@ describe("line", function() {
 
     it("should return NaN when the y doesn't fall inside the segment", function() {
       assert.isNaN(myLine.findX(10));
+      assert.isNaN(myLine.findX(2.9));
     });
 
     it("should return the x value for a vertical line", function() {
       const line = new Line({ x: 2, y: 3 }, { x: 2, y: 5 });
       assert.strictEqual(line.findX(4), 2);
+    });
+  });
+
+  describe("findY", function() {
+    const myLine = new Line({ x: 2, y: 3 }, { x: 6, y: 9 });
+
+    it("should find the value of y when x falls inside the segment", function() {
+      let actual = myLine.findY(3);
+      assert.approximately(actual, 4.5, 0.01);
+      actual = myLine.findY(4.7);
+      assert.approximately(actual, 7.05, 0.01);
     });
   });
 
