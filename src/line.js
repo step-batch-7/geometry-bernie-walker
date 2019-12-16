@@ -1,5 +1,3 @@
-const Point = require("./point");
-
 const isCoordinateInsideSegment = function(coordinate, limit1, limit2) {
   const min = Math.min(limit1, limit2);
   const max = Math.max(limit1, limit2);
@@ -47,7 +45,7 @@ class Line {
 
   get intercept() {
     let intercept = this.endA.y - this.endA.x * this.slope;
-    if (intercept == Infinity) intercept = undefined;
+    if (intercept == Infinity) intercept = NaN;
     return intercept;
   }
 
@@ -65,11 +63,6 @@ class Line {
     return otherObject instanceof Line && this.slope === otherObject.slope;
   }
 
-  hasPoint(point) {
-    if (!(point instanceof Point)) return false;
-    return point.y == this.slope * point.x + this.intercept;
-  }
-
   findX(y) {
     if (!isCoordinateInsideSegment(y, this.endA.y, this.endB.y)) return NaN;
     if (this.slope == Infinity || this.slope == -Infinity) return this.endA.x;
@@ -82,6 +75,10 @@ class Line {
     if (this.slope == Infinity || this.slope == -Infinity)
       return Math.max(this.endA.y, this.endB.y);
     return this.slope * x + this.intercept;
+  }
+
+  hasPoint(point) {
+    return point.x == this.findX(point.y) || point.y == this.findY(point.x);
   }
 }
 
