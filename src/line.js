@@ -37,24 +37,16 @@ class Line {
     return Math.sqrt(diffInX ** 2 + diffInY ** 2);
   }
 
-  getSlope(line = this) {
-    const diffInX = line.endA.x - line.endB.x;
-    const diffInY = line.endA.y - line.endB.y;
+  get slope() {
+    const diffInX = this.endA.x - this.endB.x;
+    const diffInY = this.endA.y - this.endB.y;
     return diffInY / diffInX;
   }
 
-  get slope() {
-    return this.getSlope();
-  }
-
-  getIntercept(line = this) {
+  get intercept() {
     let intercept = this.endA.y - this.endA.x * this.slope;
     if (intercept == Infinity) intercept = undefined;
     return intercept;
-  }
-
-  get intercept() {
-    return this.getIntercept();
   }
 
   isEqualTo(otherObject) {
@@ -68,9 +60,7 @@ class Line {
   isParallelTo(otherObject) {
     if (this.isEqualTo(otherObject)) return false;
 
-    return (
-      otherObject instanceof Line && this.slope === this.getSlope(otherObject)
-    );
+    return otherObject instanceof Line && this.slope === otherObject.slope;
   }
 
   findX(y) {

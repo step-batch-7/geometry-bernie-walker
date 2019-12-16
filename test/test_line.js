@@ -117,7 +117,7 @@ describe("line", function() {
   describe("findX", function() {
     const myLine = new Line({ x: 2, y: 3 }, { x: 6, y: 9 });
 
-    it("should return the x value given y when the point falls inside the segment", function() {
+    it("should return the x value given y when the y falls inside the segment", function() {
       let actual = myLine.findX(5);
       assert.approximately(actual, 3.333, 0.01);
       actual = myLine.findX(3.5);
