@@ -1,3 +1,5 @@
+const Point = require("./point");
+
 const isCoordinateInsideSegment = function(coordinate, limit1, limit2) {
   const min = Math.min(limit1, limit2);
   const max = Math.max(limit1, limit2);
@@ -61,6 +63,10 @@ class Line {
     if (this.isEqualTo(otherObject)) return false;
 
     return otherObject instanceof Line && this.slope === otherObject.slope;
+  }
+
+  hasPoint(point) {
+    return point.y == this.slope * point.x + this.intercept;
   }
 
   findX(y) {

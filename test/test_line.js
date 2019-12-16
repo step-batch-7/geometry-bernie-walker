@@ -1,5 +1,6 @@
 const { assert } = require("chai");
 const Line = require("../src/line");
+const Point = require("../src/point");
 
 describe("line", function() {
   it("should produce the desired line object", function() {
@@ -203,6 +204,20 @@ describe("line", function() {
     it("the intercept of the vertical line should be undefined", function() {
       const line = new Line({ x: 2, y: 3 }, { x: 2, y: 9 });
       assert.isUndefined(line.intercept);
+    });
+  });
+
+  describe("hasPoint", function() {
+    const myLine = new Line({ x: 2, y: 3 }, { x: 6, y: 9 });
+
+    it("should affirm if the given point is present on the segment", function() {
+      const point = new Point(4, 6);
+      assert.isTrue(myLine.hasPoint(point));
+    });
+
+    it("shuold decline if the given point is not present on the segment", function() {
+      const point = new Point(3, 4);
+      assert.isFalse(myLine.hasPoint(point));
     });
   });
 });
