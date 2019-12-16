@@ -8,6 +8,10 @@ class Point {
     return `[Point @(${this.x},${this.y})]`;
   }
 
+  clone() {
+    return new Point(this.x, this.y);
+  }
+
   visit(visitor) {
     return visitor(this.x, this.y);
   }
@@ -20,8 +24,8 @@ class Point {
     );
   }
 
-  clone() {
-    return new Point(this.x, this.y);
+  isOn(line) {
+    return line.hasPoint(this);
   }
 }
 
