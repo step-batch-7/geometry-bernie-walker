@@ -144,6 +144,10 @@ describe("line", function() {
       actual = myLine.findY(4.7);
       assert.approximately(actual, 7.05, 0.01);
     });
+
+    it("shuold give NaN when the x doesn't fall inside the segment", function() {
+      assert.isNaN(myLine.findY(6.5));
+    });
   });
 
   describe("split", function() {

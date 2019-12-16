@@ -70,6 +70,7 @@ class Line {
   }
 
   findY(x) {
+    if (!isCoordinateInsideSegment(x, this.endA.x, this.endB.x)) return NaN;
     return this.slope * x + this.intercept;
   }
 }
