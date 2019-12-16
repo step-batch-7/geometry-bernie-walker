@@ -79,4 +79,20 @@ describe("point", function() {
       assert.isFalse(point.isOn(myLine));
     });
   });
+
+  describe("findDistanceTo", function() {
+    it("should find the distance to a given point for positive coordinates", function() {
+      const point1 = new Point(2, 3);
+      const point2 = new Point(5, 7);
+      const actual = point1.findDistanceTo(point2);
+      assert.approximately(actual, 5, 0.01);
+    });
+
+    it("should find the distance to a given point for negative coordinates", function() {
+      const point1 = new Point(2, -3);
+      const point2 = new Point(-5, 2);
+      const actual = point1.findDistanceTo(point2);
+      assert.approximately(actual, 8.602, 0.01);
+    });
+  });
 });

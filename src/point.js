@@ -16,6 +16,12 @@ class Point {
     return visitor(this.x, this.y);
   }
 
+  findDistanceTo(otherPoint) {
+    const diffInX = this.x - otherPoint.x;
+    const diffInY = this.y - otherPoint.y;
+    return Math.sqrt(diffInX ** 2 + diffInY ** 2);
+  }
+
   isEqualTo(otherObject) {
     return (
       otherObject instanceof Point &&
