@@ -1,3 +1,5 @@
+const Point = require("./point");
+
 const isCoordinateInsideSegment = function(coordinate, limit1, limit2) {
   const min = Math.min(limit1, limit2);
   const max = Math.max(limit1, limit2);
@@ -5,14 +7,10 @@ const isCoordinateInsideSegment = function(coordinate, limit1, limit2) {
   return coordinate >= min && coordinate <= max;
 };
 
-const arePointsEqual = function(point1, point2) {
-  return point1.x === point2.x && point1.y === point1.y;
-};
-
 class Line {
   constructor(pointA, pointB) {
-    this.endA = { x: pointA.x, y: pointA.y };
-    this.endB = { x: pointB.x, y: pointB.y };
+    this.endA = new Point(pointA.x, pointA.y);
+    this.endB = new Point(pointB.x, pointB.y);
   }
 
   toString() {
@@ -49,8 +47,8 @@ class Line {
   isEqualTo(otherObject) {
     return (
       otherObject instanceof Line &&
-      arePointsEqual(this.endA, otherObject.endA) &&
-      arePointsEqual(this.endB, otherObject.endB)
+      this.endA.isEqualTo(otherObject.endA) &&
+      this.endB.isEqualTo(otherObject.endB)
     );
   }
 
