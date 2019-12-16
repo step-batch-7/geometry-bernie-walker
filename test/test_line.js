@@ -154,6 +154,14 @@ describe("line", function() {
 
     it("shuold give NaN when the x doesn't fall inside the segment", function() {
       assert.isNaN(myLine.findY(6.5));
+      assert.isNaN(myLine.findY(1.9));
+    });
+
+    it("shuould find the value of y as the max value of  y for vertical line", function() {
+      let line = new Line({ x: 1, y: 3 }, { x: 1, y: 6 });
+      assert.strictEqual(line.findY(1), 6);
+      line = new Line({ x: -2, y: 8 }, { x: -2, y: 4 });
+      assert.strictEqual(line.findY(-2), 8);
     });
   });
 
