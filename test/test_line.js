@@ -95,7 +95,7 @@ describe("line", function() {
     const myLine = new Line({ x: 2, y: 1 }, { x: 6, y: 4 });
 
     it("should affirm if two lines are parallel", function() {
-      const parallelLine = new Line({ x: 2, y: 1 }, { x: 4, y: 2.5 });
+      const parallelLine = new Line({ x: 1, y: 2 }, { x: 5, y: 5 });
       assert.isTrue(myLine.isParallelTo(parallelLine));
     });
 
@@ -107,6 +107,11 @@ describe("line", function() {
     it("should decline is the type of one is not Line", function() {
       const nonLine = { start: { x: 2, y: 1 }, end: { x: 4, y: 2.5 } };
       assert.isFalse(myLine.isParallelTo(nonLine));
+    });
+
+    it("should decline if two lines have same intercept", function() {
+      const sameInterceptLine = new Line({ x: 2, y: 1 }, { x: 4, y: 2.5 });
+      assert.isFalse(myLine.isParallelTo(sameInterceptLine));
     });
 
     it("should decline if the line sent is same line", function() {
