@@ -66,6 +66,7 @@ class Line {
   findX(y) {
     if (!isCoordinateInsideSegment(y, this.endA.y, this.endB.y)) return NaN;
     if (this.slope == Infinity || this.slope == -Infinity) return this.endA.x;
+    if (this.slope == 0) return Math.max(this.endA.x, this.endB.x);
     return (y - this.intercept) / this.slope;
   }
 

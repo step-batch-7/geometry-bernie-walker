@@ -129,9 +129,16 @@ describe("line", function() {
       assert.isNaN(myLine.findX(2.9));
     });
 
-    it("should return the x value for a vertical line", function() {
+    it("should find the value x value for a vertical line", function() {
       const line = new Line({ x: 2, y: 3 }, { x: 2, y: 5 });
       assert.strictEqual(line.findX(4), 2);
+    });
+
+    it("should find the value of x as the max value of x for a horizontal line", function() {
+      let line = new Line({ x: 2, y: 3 }, { x: 6, y: 3 });
+      assert.strictEqual(line.findX(3), 6);
+      line = new Line({ x: 7, y: 2 }, { x: 4, y: 2 });
+      assert.strictEqual(line.findX(2), 7);
     });
   });
 
