@@ -219,5 +219,10 @@ describe("line", function() {
       const point = new Point(3, 4);
       assert.isFalse(myLine.hasPoint(point));
     });
+
+    it("should decline if the given object is not a point", function() {
+      const point = { x: 4, y: 6 };
+      assert.isFalse(myLine.hasPoint(point));
+    });
   });
 });

@@ -66,6 +66,7 @@ class Line {
   }
 
   hasPoint(point) {
+    if (!(point instanceof Point)) return false;
     return point.y == this.slope * point.x + this.intercept;
   }
 
