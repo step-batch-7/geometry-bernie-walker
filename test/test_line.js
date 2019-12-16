@@ -72,19 +72,19 @@ describe("line", function() {
       assert.strictEqual(actual, 0.75);
     });
 
-    it("the slope should be same for the same oordinates in different order", function() {
+    it("the slope should be same for the same coordinates in different order", function() {
       const line = new Line({ x: 6, y: 4 }, { x: 2, y: 1 });
       const actual = line.slope;
       assert.strictEqual(actual, 0.75);
     });
 
-    it("the slope should be zero when the oordinates are equal", function() {
+    it("the slope should be zero when the coordinates are equal", function() {
       const line = new Line({ x: 6, y: 4 }, { x: 2, y: 4 });
       const actual = line.slope;
       assert.strictEqual(actual, 0);
     });
 
-    it("the slope should be infinity when the absisscas are equal", function() {
+    it("the slope should be infinity when the abscissas are equal", function() {
       const line = new Line({ x: 2, y: 4 }, { x: 2, y: 1 });
       const actual = line.slope;
       assert.strictEqual(actual, Infinity);
@@ -157,12 +157,12 @@ describe("line", function() {
       assert.approximately(actual, 7.05, 0.01);
     });
 
-    it("shuold give NaN when the x doesn't fall inside the segment", function() {
+    it("should give NaN when the x doesn't fall inside the segment", function() {
       assert.isNaN(myLine.findY(6.5));
       assert.isNaN(myLine.findY(1.9));
     });
 
-    it("shuould find the value of y as the max value of  y for vertical line", function() {
+    it("should find the value of y as the max value of  y for vertical line", function() {
       let line = new Line({ x: 1, y: 3 }, { x: 1, y: 6 });
       assert.strictEqual(line.findY(1), 6);
       line = new Line({ x: -2, y: 8 }, { x: -2, y: 4 });
