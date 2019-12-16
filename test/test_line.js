@@ -163,6 +163,13 @@ describe("line", function() {
       line = new Line({ x: -2, y: 8 }, { x: -2, y: 4 });
       assert.strictEqual(line.findY(-2), 8);
     });
+
+    it("should find the value of y for a horizontal line", function() {
+      let line = new Line({ x: 2, y: 3 }, { x: 6, y: 3 });
+      assert.strictEqual(line.findY(4), 3);
+      line = new Line({ x: -1, y: -3 }, { x: 3.5, y: -3 });
+      assert.strictEqual(line.findY(0), -3);
+    });
   });
 
   describe("split", function() {
