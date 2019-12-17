@@ -71,4 +71,17 @@ describe("Circle", function() {
       assert.isFalse(actual);
     });
   });
+
+  describe("moveTo", function() {
+    it("should create a circle with same dimensions at given point", function() {
+      const actual = circle.moveTo({ x: 1, y: 1 });
+      const expected = { center: { x: 1, y: 1 }, radius: 5 };
+      assert.deepStrictEqual(actual, expected);
+    });
+
+    it("should be the instance of Circle", function() {
+      const result = circle.moveTo({ x: 1, y: 1 });
+      assert.isTrue(result instanceof Circle);
+    });
+  });
 });
