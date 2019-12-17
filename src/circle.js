@@ -12,6 +12,7 @@ class Circle {
 
   isEqualTo(otherCircle) {
     return (
+      otherCircle instanceof Circle &&
       this.center.isEqualTo(otherCircle.center) &&
       this.radius == otherCircle.radius
     );

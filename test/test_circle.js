@@ -35,5 +35,10 @@ describe("Circle", function() {
       const unequalCircle = new Circle({ x: 2, y: 2 }, 5);
       assert.isFalse(circle.isEqualTo(unequalCircle));
     });
+
+    it("should decline the equality when given input is not a circle", function() {
+      const nonCircle = { center: { x: 1, y: 2 }, radius: 5 };
+      assert.isFalse(circle.isEqualTo(nonCircle));
+    });
   });
 });
