@@ -53,4 +53,16 @@ describe("Circle", function() {
       assert.approximately(circle.perimeter, 31.418, 0.01);
     });
   });
+
+  describe("hasPoint", function() {
+    it("should affirm if the given point is on the line", function() {
+      const point = { x: 4, y: 6 };
+      assert.isTrue(circle.hasPoint(point));
+    });
+
+    it("should deny if the given point is on the line", function() {
+      const point = { x: 4, y: 5 };
+      assert.isFalse(circle.hasPoint(point));
+    });
+  });
 });

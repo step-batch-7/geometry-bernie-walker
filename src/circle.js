@@ -10,12 +10,12 @@ class Circle {
     return `[Circle @(${this.center.x},${this.center.y}) radius ${this.radius}]`;
   }
 
-  get area() {
-    return Math.PI * this.radius ** 2;
-  }
-
   get perimeter() {
     return 2 * Math.PI * this.radius;
+  }
+
+  get area() {
+    return Math.PI * this.radius ** 2;
   }
 
   isEqualTo(otherCircle) {
@@ -24,6 +24,10 @@ class Circle {
       this.center.isEqualTo(otherCircle.center) &&
       this.radius == otherCircle.radius
     );
+  }
+
+  hasPoint(point) {
+    return this.center.findDistanceTo(point) == this.radius;
   }
 }
 
