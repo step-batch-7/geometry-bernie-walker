@@ -105,5 +105,10 @@ describe("Circle", function() {
       const point = new Point(4, 6);
       assert.isTrue(circle.covers(point));
     });
+
+    it("should deny when the parameter is not a point", function() {
+      const point = { x: 2, y: 2 };
+      assert.isFalse(circle.covers(point));
+    });
   });
 });
