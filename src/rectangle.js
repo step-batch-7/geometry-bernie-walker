@@ -14,6 +14,10 @@ class Rectangle {
     return this.l * this.b;
   }
 
+  get perimeter() {
+    return 2 * (this.l + this.b);
+  }
+
   toString() {
     return `[Rectangle (${this.vertexA.x},${this.vertexA.y}) to (${this.vertexC.x},${this.vertexC.y})]`;
   }

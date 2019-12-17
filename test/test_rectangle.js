@@ -31,4 +31,10 @@ describe("Rectangle", function() {
       assert.strictEqual(rectangle.area, 12);
     });
   });
+
+  describe("perimeter", function() {
+    it("should calculate the perimeter", function() {
+      assert.strictEqual(rectangle.perimeter, 14);
+    });
+  });
 });
