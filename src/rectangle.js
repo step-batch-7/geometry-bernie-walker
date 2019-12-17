@@ -10,6 +10,10 @@ class Rectangle {
     this.b = this.vertexB.findDistanceTo(this.vertexC);
   }
 
+  get area() {
+    return this.l * this.b;
+  }
+
   toString() {
     return `[Rectangle (${this.vertexA.x},${this.vertexA.y}) to (${this.vertexC.x},${this.vertexC.y})]`;
   }

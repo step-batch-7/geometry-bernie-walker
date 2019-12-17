@@ -25,4 +25,10 @@ describe("Rectangle", function() {
       assert.strictEqual(rectangle.toString(), expected);
     });
   });
+
+  describe("area", function() {
+    it("should calculate the area of rectangle", function() {
+      assert.strictEqual(rectangle.area, 12);
+    });
+  });
 });
