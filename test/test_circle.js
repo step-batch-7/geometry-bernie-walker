@@ -2,17 +2,38 @@ const { assert } = require("chai");
 const Circle = require("../src/circle");
 
 describe("Circle", function() {
+  let circle;
+
+  beforeEach(function() {
+    circle = new Circle({ x: 1, y: 2 }, 5);
+  });
+
   it("should produce a circle object with center and radius", function() {
-    const actual = new Circle({ x: 1, y: 2 }, 5);
     const expected = { center: { x: 1, y: 2 }, radius: 5 };
-    assert.deepStrictEqual(actual, expected);
+    assert.deepStrictEqual(circle, expected);
   });
 
   describe("toString", function() {
     it("should produce the string implementation of the circle", function() {
-      const circle = new Circle({ x: 1, y: 2 }, 5);
       const expected = "[Circle @(1,2) radius 5]";
       assert.strictEqual(circle.toString(), expected);
+    });
+  });
+
+  describe("isEqualTo", function() {
+    it("should affirm the equality of two equal circles", function() {
+      const equalCircle = new Circle({ x: 1, y: 2 }, 5);
+      assert.isTrue(circle.isEqualTo(equalCircle));
+    });
+
+    it("should decline the equality of unequal circles with different radius", function() {
+      const unequalCircle = new Circle({ x: 1, y: 2 }, 3);
+      assert.isFalse(circle.isEqualTo(unequalCircle));
+    });
+
+    it("should decline the equality of two unequal circles with different centers", function() {
+      const unequalCircle = new Circle({ x: 2, y: 2 }, 5);
+      assert.isFalse(circle.isEqualTo(unequalCircle));
     });
   });
 });
