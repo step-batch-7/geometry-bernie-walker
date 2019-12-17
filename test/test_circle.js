@@ -1,5 +1,6 @@
 const { assert } = require("chai");
 const Circle = require("../src/circle");
+const Point = require("../src/point");
 
 describe("Circle", function() {
   let circle;
@@ -56,13 +57,18 @@ describe("Circle", function() {
 
   describe("hasPoint", function() {
     it("should affirm if the given point is on the line", function() {
-      const point = { x: 4, y: 6 };
+      const point = new Point(4, 6);
       assert.isTrue(circle.hasPoint(point));
     });
 
     it("should deny if the given point is on the line", function() {
-      const point = { x: 4, y: 5 };
+      const point = new Point(4, 5);
       assert.isFalse(circle.hasPoint(point));
+    });
+
+    it("should return false when the parameter is not a point", function() {
+      const actual = circle.hasPoint({ x: 4, y: 6 });
+      assert.isFalse(actual);
     });
   });
 });
