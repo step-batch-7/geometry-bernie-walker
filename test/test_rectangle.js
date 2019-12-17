@@ -73,5 +73,10 @@ describe("Rectangle", function() {
       const point = new Point();
       assert.isFalse(rectangle.hasPoint(point));
     });
+
+    it("should decline if the parameter is not a point", function() {
+      const point = { x: 1, y: 2 };
+      assert.isFalse(rectangle.hasPoint(point));
+    });
   });
 });

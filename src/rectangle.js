@@ -49,6 +49,7 @@ class Rectangle {
   }
 
   hasPoint(point) {
+    if (!(point instanceof Point)) return false;
     const sides = getSides(this);
     return sides.some(side => point.isOn(side));
   }
