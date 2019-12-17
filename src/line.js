@@ -89,6 +89,11 @@ class Line {
     const coordinates = getCoordinates(this, distance, this.length - distance);
     return new Point(coordinates.x, coordinates.y);
   }
+
+  findPointFromEnd(distance) {
+    const reversedLine = new Line(this.endB, this.endA);
+    return reversedLine.findPointFromStart(distance);
+  }
 }
 
 module.exports = Line;

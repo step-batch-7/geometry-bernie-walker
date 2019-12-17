@@ -234,7 +234,7 @@ describe("Line", function() {
   });
 
   describe("findPointFromStart", function() {
-    it("should find a point from start at the given distance", function() {
+    it("should find a point from start at a given distance", function() {
       const result = line.findPointFromStart(2);
       const actual = result.isEqualTo(new Point(3.6, 2.2));
       assert.isTrue(actual);
@@ -248,6 +248,14 @@ describe("Line", function() {
     it("should return undefined if the distance is less than 0", function() {
       const result = line.findPointFromStart(-1);
       assert.isUndefined(result);
+    });
+  });
+
+  describe("findPointFromEnd", function() {
+    it("should find a point from end at a given distance", function() {
+      const result = line.findPointFromEnd(3);
+      const actual = result.isEqualTo(new Point(3.6, 2.2));
+      assert.isTrue(actual);
     });
   });
 });
