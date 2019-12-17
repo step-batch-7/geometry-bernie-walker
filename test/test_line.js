@@ -1,7 +1,8 @@
 const { assert } = require("chai");
 const Line = require("../src/line");
+const Point = require("../src/point");
 
-describe("line", function() {
+describe("Line", function() {
   let line;
   beforeEach(() => {
     line = new Line({ x: 2, y: 1 }, { x: 6, y: 4 });
@@ -229,6 +230,15 @@ describe("line", function() {
       assert.isFalse(line.hasPoint(point));
       point = { x: 8, y: 12 };
       assert.isFalse(line.hasPoint(point));
+    });
+  });
+
+  describe("findPointFromStart", function() {
+    it("should find a point from start at the given distance", function() {
+      const result = line.findPointFromStart(2);
+      console.log(result);
+      const actual = result.isEqualTo(new Point(3.6, 2.2));
+      assert.isTrue(actual);
     });
   });
 });

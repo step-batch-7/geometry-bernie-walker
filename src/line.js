@@ -1,14 +1,21 @@
 const Point = require("./point");
 
+const getCoordinates = function(line, m, n) {
+  const sumOfRatios = m + n;
+  const x = (m * line.endB.x + n * line.endA.x) / sumOfRatios;
+  const y = (m * line.endB.y + n * line.endA.y) / sumOfRatios;
+  return { x, y };
+};
+
+const isVertical = function(slope) {
+  return slope == Infinity || slope == -Infinity;
+};
+
 const isCoordinateInsideSegment = function(coordinate, limit1, limit2) {
   const min = Math.min(limit1, limit2);
   const max = Math.max(limit1, limit2);
 
   return coordinate >= min && coordinate <= max;
-};
-
-const isVertical = function(slope) {
-  return slope == Infinity || slope == -Infinity;
 };
 
 class Line {
@@ -75,6 +82,11 @@ class Line {
 
   hasPoint(point) {
     return point.x == this.findX(point.y) || point.y == this.findY(point.x);
+  }
+
+  findPointFromStart(distance) {
+    const coordinates = getCoordinates(this, distance, this.length - distance);
+    return new Point(coordinates.x, coordinates.y);
   }
 }
 
