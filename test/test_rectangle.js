@@ -37,4 +37,28 @@ describe("Rectangle", function() {
       assert.strictEqual(rectangle.perimeter, 14);
     });
   });
+
+  describe("isEqualTo", function() {
+    it("should affirm the equality of equal rectangles", function() {
+      const equalRectangle = new Rectangle({ x: 1, y: 1 }, { x: 5, y: 4 });
+      assert.isTrue(rectangle.isEqualTo(equalRectangle));
+    });
+  });
+
+  it("should deny the equality of unequal rectangles", function() {
+    const nonEqualRectangle = new Rectangle({ x: 1, y: 2 }, { x: 3, y: 4 });
+    assert.isFalse(rectangle.isEqualTo(nonEqualRectangle));
+  });
+
+  it("should deny the equality if the parameter is not a rectangle", function() {
+    const nonRectangle = {
+      vertexA: { x: 1, y: 1 },
+      vertexB: { x: 5, y: 1 },
+      vertexC: { x: 5, y: 4 },
+      vertexD: { x: 1, y: 4 },
+      l: 4,
+      b: 3
+    };
+    assert.isFalse(rectangle.isEqualTo(nonRectangle));
+  });
 });

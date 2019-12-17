@@ -21,6 +21,18 @@ class Rectangle {
   toString() {
     return `[Rectangle (${this.vertexA.x},${this.vertexA.y}) to (${this.vertexC.x},${this.vertexC.y})]`;
   }
+
+  isEqualTo(rectangle) {
+    const vertices = ["vertexA", "vertexB", "vertexC", "vertexD"];
+
+    if (!rectangle instanceof Rectangle) return false;
+
+    for (let vertex of vertices) {
+      if (!this[vertex].isEqualTo(rectangle[vertex])) return false;
+    }
+
+    return true;
+  }
 }
 
 module.exports = Rectangle;
