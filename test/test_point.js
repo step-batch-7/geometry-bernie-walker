@@ -106,5 +106,10 @@ describe("point", function() {
       const actual = point1.findDistanceTo(point2);
       assert.approximately(actual, 8.602, 0.01);
     });
+
+    it("should return null when the parameter is not a point", function() {
+      const point1 = { x: 5, y: 7 };
+      assert.isNull(point.findDistanceTo(point1));
+    });
   });
 });
