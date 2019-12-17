@@ -9,6 +9,10 @@ class Rectangle {
     this.l = this.vertexA.findDistanceTo(this.vertexB);
     this.b = this.vertexB.findDistanceTo(this.vertexC);
   }
+
+  toString() {
+    return `[Rectangle (${this.vertexA.x},${this.vertexA.y}) to (${this.vertexC.x},${this.vertexC.y})]`;
+  }
 }
 
 module.exports = Rectangle;

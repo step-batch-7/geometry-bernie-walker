@@ -18,4 +18,11 @@ describe("Rectangle", function() {
     };
     assert.deepStrictEqual(rectangle, expected);
   });
+
+  describe("toString", function() {
+    it("should produce the string representation of the rectangle", function() {
+      const expected = "[Rectangle (1,1) to (5,4)]";
+      assert.strictEqual(rectangle.toString(), expected);
+    });
+  });
 });
