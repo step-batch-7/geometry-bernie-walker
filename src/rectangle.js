@@ -2,7 +2,7 @@ const Point = require("./point");
 const Line = require("./line");
 
 const withinRange = function(value) {
-  return value >= this.min && value <= this.max;
+  return value > this.min && value < this.max;
 };
 
 const getLimit = function(point1, point2) {

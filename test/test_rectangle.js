@@ -96,9 +96,9 @@ describe("Rectangle", function() {
       assert.isFalse(rectangle.covers(point));
     });
 
-    it("should affirm if the point lies on the perimeter of the rectangle", function() {
+    it("should deny if the point lies on the perimeter of the rectangle", function() {
       const point = new Point(1, 2);
-      assert.isTrue(rectangle.covers(point));
+      assert.isFalse(rectangle.covers(point));
     });
   });
 });
