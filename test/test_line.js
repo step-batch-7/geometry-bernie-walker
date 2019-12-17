@@ -236,9 +236,18 @@ describe("Line", function() {
   describe("findPointFromStart", function() {
     it("should find a point from start at the given distance", function() {
       const result = line.findPointFromStart(2);
-      console.log(result);
       const actual = result.isEqualTo(new Point(3.6, 2.2));
       assert.isTrue(actual);
+    });
+
+    it("should return undefined if the distance is less than the length", function() {
+      const result = line.findPointFromStart(6);
+      assert.isUndefined(result);
+    });
+
+    it("should return undefined if the distance is less than 0", function() {
+      const result = line.findPointFromStart(-1);
+      assert.isUndefined(result);
     });
   });
 });
