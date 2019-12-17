@@ -257,5 +257,15 @@ describe("Line", function() {
       const actual = result.isEqualTo(new Point(3.6, 2.2));
       assert.isTrue(actual);
     });
+
+    it("should return undefined if the distance is less than the length", function() {
+      const result = line.findPointFromEnd(6);
+      assert.isUndefined(result);
+    });
+
+    it("should return undefined if the distance is less than 0", function() {
+      const result = line.findPointFromEnd(-1);
+      assert.isUndefined(result);
+    });
   });
 });
