@@ -55,7 +55,7 @@ class Rectangle {
   isEqualTo(rectangle) {
     const vertices = ["vertexA", "vertexB", "vertexC", "vertexD"];
 
-    if (!rectangle instanceof Rectangle) return false;
+    if (!(rectangle instanceof Rectangle)) return false;
 
     for (let vertex of vertices) {
       if (!this[vertex].isEqualTo(rectangle[vertex])) return false;
