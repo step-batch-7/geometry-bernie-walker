@@ -74,7 +74,7 @@ describe("Rectangle", function() {
       assert.isFalse(rectangle.hasPoint(point));
     });
 
-    it("should decline if the parameter is not a point", function() {
+    it("should decline if the parameter is not a instace of Point", function() {
       const point = { x: 1, y: 2 };
       assert.isFalse(rectangle.hasPoint(point));
     });
@@ -88,6 +88,11 @@ describe("Rectangle", function() {
 
     it("should deny if the rectangle does not cover the point", function() {
       const point = new Point(2, 5);
+      assert.isFalse(rectangle.covers(point));
+    });
+
+    it("should decline if the parameter is not a instance of Point", function() {
+      const point = { x: 2, y: 3 };
       assert.isFalse(rectangle.covers(point));
     });
   });

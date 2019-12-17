@@ -71,6 +71,7 @@ class Rectangle {
   }
 
   covers(point) {
+    if (!(point instanceof Point)) return false;
     const range = getRange(this);
     const withinXRange = withinRange.bind(range.x);
     const withinYRange = withinRange.bind(range.y);
