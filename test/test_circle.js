@@ -41,4 +41,10 @@ describe("Circle", function() {
       assert.isFalse(circle.isEqualTo(nonCircle));
     });
   });
+
+  describe("area", function() {
+    it("should find the area of the circle", function() {
+      assert.approximately(circle.area, 78.539, 0.01);
+    });
+  });
 });

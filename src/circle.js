@@ -10,6 +10,10 @@ class Circle {
     return `[Circle @(${this.center.x},${this.center.y}) radius ${this.radius}]`;
   }
 
+  get area() {
+    return Math.PI * this.radius ** 2;
+  }
+
   isEqualTo(otherCircle) {
     return (
       otherCircle instanceof Circle &&
