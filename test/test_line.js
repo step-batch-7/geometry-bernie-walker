@@ -216,20 +216,25 @@ describe("Line", function() {
     });
 
     it("should affirm if the given point is present on the segment", function() {
-      const point = { x: 4, y: 6 };
+      const point = new Point(4, 6);
       assert.isTrue(line.hasPoint(point));
     });
 
     it("should decline if the given point is not present on the segment", function() {
-      const point = { x: 3, y: 4 };
+      const point = new Point(3, 4);
       assert.isFalse(line.hasPoint(point));
     });
 
     it("should return false the point is outside the segment", function() {
-      let point = { x: 1, y: 1.5 };
+      let point = new Point(1, 1.5);
       assert.isFalse(line.hasPoint(point));
-      point = { x: 8, y: 12 };
+      point = new Point(8, 12);
       assert.isFalse(line.hasPoint(point));
+    });
+
+    it("should return false when sent point is not an instance of Point", function() {
+      const actual = line.hasPoint({ x: 4, y: 6 });
+      assert.isFalse(actual);
     });
   });
 

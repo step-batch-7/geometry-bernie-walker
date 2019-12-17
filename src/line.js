@@ -81,6 +81,7 @@ class Line {
   }
 
   hasPoint(point) {
+    if (!(point instanceof Point)) return false;
     return point.x == this.findX(point.y) || point.y == this.findY(point.x);
   }
 
