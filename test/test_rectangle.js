@@ -1,5 +1,6 @@
 const { assert } = require("chai");
 const Rectangle = require("../src/rectangle");
+const Point = require("../src/point");
 
 describe("Rectangle", function() {
   let rectangle;
@@ -60,5 +61,17 @@ describe("Rectangle", function() {
       b: 3
     };
     assert.isFalse(rectangle.isEqualTo(nonRectangle));
+  });
+
+  describe("hasPoint", function() {
+    it("should affirm if the point is present on the rectangle", function() {
+      const point = new Point(1, 2);
+      assert.isTrue(rectangle.hasPoint(point));
+    });
+
+    it("should decline if the point is not present on the rectangle", function() {
+      const point = new Point();
+      assert.isFalse(rectangle.hasPoint(point));
+    });
   });
 });

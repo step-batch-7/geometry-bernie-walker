@@ -1,4 +1,18 @@
 const Point = require("./point");
+const Line = require("./line");
+
+const getSides = function(line) {
+  const sides = [];
+  const names = ["B", "C", "D", "A"];
+  let prevName = "A";
+
+  for (let name of names) {
+    sides.push(new Line(line[`vertex${prevName}`], line[`vertex${name}`]));
+    prevName = name;
+  }
+
+  return sides;
+};
 
 class Rectangle {
   constructor(pointA, pointC) {
@@ -32,6 +46,11 @@ class Rectangle {
     }
 
     return true;
+  }
+
+  hasPoint(point) {
+    const sides = getSides(this);
+    return sides.some(side => point.isOn(side));
   }
 }
 
