@@ -101,9 +101,9 @@ describe("Circle", function() {
       assert.isTrue(circle.covers(point));
     });
 
-    it("should affirm when the point is on the circumference", function() {
+    it("should deny when the point is on the circumference", function() {
       const point = new Point(4, 6);
-      assert.isTrue(circle.covers(point));
+      assert.isFalse(circle.covers(point));
     });
 
     it("should deny when the parameter is not a point", function() {
