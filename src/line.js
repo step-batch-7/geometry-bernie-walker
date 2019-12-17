@@ -7,6 +7,10 @@ const isCoordinateInsideSegment = function(coordinate, limit1, limit2) {
   return coordinate >= min && coordinate <= max;
 };
 
+const isVertical = function(slope) {
+  return slope == Infinity || slope == -Infinity;
+};
+
 class Line {
   constructor(pointA, pointB) {
     this.endA = new Point(pointA.x, pointA.y);
@@ -58,15 +62,14 @@ class Line {
 
   findX(y) {
     if (!isCoordinateInsideSegment(y, this.endA.y, this.endB.y)) return NaN;
-    if (this.slope == Infinity || this.slope == -Infinity) return this.endA.x;
+    if (isVertical(this.slope)) return this.endA.x;
     if (this.slope == 0) return Math.max(this.endA.x, this.endB.x);
     return (y - this.intercept) / this.slope;
   }
 
   findY(x) {
     if (!isCoordinateInsideSegment(x, this.endA.x, this.endB.x)) return NaN;
-    if (this.slope == Infinity || this.slope == -Infinity)
-      return Math.max(this.endA.y, this.endB.y);
+    if (isVertical(this.slope)) return Math.max(this.endA.y, this.endB.y);
     return this.slope * x + this.intercept;
   }
 
