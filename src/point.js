@@ -30,8 +30,8 @@ class Point {
     );
   }
 
-  isOn(line) {
-    return line.hasPoint(this);
+  isOn(figure) {
+    return figure.hasPoint(this);
   }
 }
 

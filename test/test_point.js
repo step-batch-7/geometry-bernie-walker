@@ -1,6 +1,7 @@
 const { assert } = require("chai");
 const Point = require("../src/point");
 const Line = require("../src/line");
+const Circle = require("../src/circle");
 
 describe("point", function() {
   let point;
@@ -64,7 +65,12 @@ describe("point", function() {
   });
 
   describe("isOn", function() {
-    const line = new Line({ x: 2, y: 3 }, { x: 6, y: 9 });
+    let line;
+    let circle;
+    beforeEach(() => {
+      line = new Line({ x: 2, y: 3 }, { x: 6, y: 9 });
+      circle = new Circle({ x: 1, y: 2 }, 5);
+    });
 
     it("should affirm if the point is on the given line", function() {
       const point = new Point(4, 6);
@@ -74,6 +80,16 @@ describe("point", function() {
     it("should deny if the point is not on the given line", function() {
       const point = new Point(3, 4);
       assert.isFalse(point.isOn(line));
+    });
+
+    it("should affirm if the point is on the given Circle", function() {
+      const point = new Point(4, 6);
+      assert.isTrue(point.isOn(circle));
+    });
+
+    it("should deny if the point is on not on the given circle", function() {
+      const point = new Point(4, 5);
+      assert.isFalse(point.isOn(circle));
     });
   });
 
