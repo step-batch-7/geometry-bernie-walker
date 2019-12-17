@@ -1,6 +1,22 @@
 const Point = require("./point");
 const Line = require("./line");
 
+const withinRange = function(value) {
+  return value >= this.min && value <= this.max;
+};
+
+const getLimit = function(point1, point2) {
+  const max = Math.max(point1, point2);
+  const min = Math.min(point1, point2);
+  return { max, min };
+};
+
+const getRange = function(rectangle) {
+  const x = getLimit(rectangle.vertexA.x, rectangle.vertexC.x);
+  const y = getLimit(rectangle.vertexA.y, rectangle.vertexC.y);
+  return { x, y };
+};
+
 const getSides = function(line) {
   const sides = [];
   const names = ["B", "C", "D", "A"];
@@ -52,6 +68,13 @@ class Rectangle {
     if (!(point instanceof Point)) return false;
     const sides = getSides(this);
     return sides.some(side => point.isOn(side));
+  }
+
+  covers(point) {
+    const range = getRange(this);
+    const withinXRange = withinRange.bind(range.x);
+    const withinYRange = withinRange.bind(range.y);
+    return withinXRange(point.x) && withinYRange(point.y);
   }
 }
 

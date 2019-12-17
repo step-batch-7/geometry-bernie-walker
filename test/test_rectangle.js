@@ -79,4 +79,16 @@ describe("Rectangle", function() {
       assert.isFalse(rectangle.hasPoint(point));
     });
   });
+
+  describe("covers", function() {
+    it("should affirm if the rectangle covers the point", function() {
+      const point = new Point(2, 3);
+      assert.isTrue(rectangle.covers(point));
+    });
+
+    it("should deny if the rectangle does not cover the point", function() {
+      const point = new Point(2, 5);
+      assert.isFalse(rectangle.covers(point));
+    });
+  });
 });
