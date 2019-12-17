@@ -56,12 +56,12 @@ describe("Circle", function() {
   });
 
   describe("hasPoint", function() {
-    it("should affirm if the given point is on the line", function() {
+    it("should affirm if the given point is on the circle", function() {
       const point = new Point(4, 6);
       assert.isTrue(circle.hasPoint(point));
     });
 
-    it("should deny if the given point is on the line", function() {
+    it("should deny if the given point is on the circle", function() {
       const point = new Point(4, 5);
       assert.isFalse(circle.hasPoint(point));
     });
@@ -82,6 +82,28 @@ describe("Circle", function() {
     it("should be the instance of Circle", function() {
       const result = circle.moveTo({ x: 1, y: 1 });
       assert.isTrue(result instanceof Circle);
+    });
+  });
+
+  describe("covers", function() {
+    it("should affirm when the circle covers the point", function() {
+      const point = new Point(2, 4);
+      assert.isTrue(circle.covers(point));
+    });
+
+    it("should deny when the circle does not cover the point", function() {
+      const point = new Point(5, 6);
+      assert.isFalse(circle.covers(point));
+    });
+
+    it("should affirm if the point is center itself", function() {
+      const point = new Point(1, 2);
+      assert.isTrue(circle.covers(point));
+    });
+
+    it("should affirm when the point is on the circumference", function() {
+      const point = new Point(4, 6);
+      assert.isTrue(circle.covers(point));
     });
   });
 });
