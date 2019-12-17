@@ -47,4 +47,10 @@ describe("Circle", function() {
       assert.approximately(circle.area, 78.539, 0.01);
     });
   });
+
+  describe("perimeter", function() {
+    it("should find the perimeter of the given circle", function() {
+      assert.approximately(circle.perimeter, 31.418, 0.01);
+    });
+  });
 });
