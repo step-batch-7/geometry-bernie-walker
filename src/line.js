@@ -62,7 +62,11 @@ class Line {
   }
 
   isParallelTo(otherObject) {
-    if (this.intercept == otherObject.intercept) return false;
+    if (
+      this.intercept == otherObject.intercept ||
+      !(otherObject instanceof Line)
+    )
+      return false;
 
     return otherObject instanceof Line && this.slope === otherObject.slope;
   }
